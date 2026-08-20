@@ -7,14 +7,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // Lovable defaults Nitro to Cloudflare. Pin Vercel so the SSR bundle
-  // is a Node function, not a Workers module — otherwise Vercel returns 500s.
+  // Pin Nitro to Vercel. The Lovable wrapper defaults to Cloudflare Workers,
+  // which crashes on Vercel (500s that look like a 404 in the browser).
   nitro: {
     preset: "vercel",
-  },
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
   },
 });
