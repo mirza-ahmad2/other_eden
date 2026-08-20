@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="This Other Eden">
+  <rect width="32" height="32" fill="#F5F1E8"/>
+  <circle cx="16" cy="16" r="11" fill="none" stroke="#2C4030" stroke-width="1.4"/>
+  <path d="M16 8.5c2.2 3.2 5.8 5.4 5.8 9.2A5.8 5.8 0 0 1 16 23.5 5.8 5.8 0 0 1 10.2 17.7c0-3.8 3.6-6 5.8-9.2z" fill="#C4703F"/>
+  <path d="M16 11.2c.2 4.6.2 7.8 0 12.3" fill="none" stroke="#2C4030" stroke-width="1" stroke-linecap="round"/>
+</svg>

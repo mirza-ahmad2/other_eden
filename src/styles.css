@@ -1,0 +1,184 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * This Other Eden — design system
+ * Palette: warm cream, sage green, deep forest green, terracotta, warm charcoal
+ * Typography: Fraunces (display serif) + Inter (body)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --color-sage-soft: var(--sage-soft);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-soft: var(--terracotta-soft);
+  --color-charcoal: var(--charcoal);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand palette (oklch equivalents of the spec hex values) */
+  --cream: oklch(0.958 0.017 88);          /* #F5F1E8 */
+  --sage: oklch(0.685 0.038 140);          /* #8FA98B */
+  --sage-soft: oklch(0.86 0.024 140);
+  --forest: oklch(0.32 0.036 148);         /* #2C4030 */
+  --forest-deep: oklch(0.22 0.03 148);
+  --terracotta: oklch(0.63 0.128 47);      /* #C4703F */
+  --terracotta-soft: oklch(0.78 0.08 55);
+  --charcoal: oklch(0.22 0.008 70);        /* #2A2822 */
+
+  --background: var(--cream);
+  --foreground: var(--charcoal);
+  --card: oklch(0.98 0.01 88);
+  --card-foreground: var(--charcoal);
+  --popover: var(--cream);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--forest);
+  --primary-foreground: var(--cream);
+  --secondary: var(--sage-soft);
+  --secondary-foreground: var(--forest-deep);
+  --muted: oklch(0.93 0.015 88);
+  --muted-foreground: oklch(0.42 0.014 70);
+  --accent: var(--terracotta);
+  --accent-foreground: var(--cream);
+  --destructive: oklch(0.55 0.18 27);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.88 0.02 88);
+  --input: oklch(0.9 0.018 88);
+  --ring: var(--terracotta);
+}
+
+.dark {
+  --background: var(--forest-deep);
+  --foreground: var(--cream);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  img, video {
+    max-width: 100%;
+  }
+
+  img:not(.absolute) {
+    height: auto;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--terracotta);
+    color: var(--cream);
+  }
+
+  /* Brand-coloured native form controls as a fallback */
+  select,
+  option {
+    accent-color: #C4703F;
+    background-color: var(--cream);
+    color: var(--charcoal);
+  }
+
+  select option:checked,
+  select option:hover,
+  select option:focus {
+    background-color: #C4703F;
+    color: #F5F1E8;
+  }
+
+  /* Hide injected editor branding if present */
+  a[href*="lovable.dev"],
+  a[href*="lovable.app"],
+  [id*="lovable-badge"],
+  [class*="lovable-badge"] {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes scroll-line {
+  0% { transform: scaleY(0.35); opacity: 0.35; }
+  50% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0.35); opacity: 0.35; }
+}
+
+@utility animate-scroll-line {
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+@utility container-eden {
+  width: min(87vw, 1440px);
+  max-width: 1440px;
+  margin-inline: auto;
+}
