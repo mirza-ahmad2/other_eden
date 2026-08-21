@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import {
   Sparkles,
   Palette,
@@ -8,9 +7,9 @@ import {
   Dog,
   ArrowRight,
   ArrowUpRight,
+  ImageIcon,
 } from "lucide-react";
 import heroGarden from "@/assets/hero-garden.jpg";
-import detailTherapy from "@/assets/detail-therapy.jpg";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 
@@ -151,18 +150,16 @@ function HomePage() {
         <div className="container-eden grid md:grid-cols-12 gap-12 md:gap-16 items-center">
           <div className="md:col-span-5 relative">
             <Reveal>
-              <div className="aspect-[4/5] overflow-hidden bg-muted">
-                <motion.img
-                  src={detailTherapy}
-                  alt="A warm therapy room with linen armchairs and soft light"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  width={1400}
-                  height={1000}
-                  initial={{ scale: 1.1 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-                  viewport={{ once: true }}
+              <div
+                className="aspect-[4/5] overflow-hidden bg-muted flex items-center justify-center"
+                role="img"
+                aria-label="Founder portrait placeholder"
+              >
+                <ImageIcon
+                  size={72}
+                  strokeWidth={1.1}
+                  className="text-forest/35"
+                  aria-hidden="true"
                 />
               </div>
             </Reveal>
